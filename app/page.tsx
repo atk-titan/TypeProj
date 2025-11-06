@@ -2,13 +2,15 @@ import Image from "next/image";
 
 export default function Home() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <nav>
-        <div>
-          <Image src="/logo_dark.png" alt="logo" width={50} height={24}/>
-        </div>
-      </nav>
-      <div><h1 className="text-4xl text-foreground">Type Racer</h1></div>
+    <div className="h-screen w-screen relative bg-background ">
+      <div className="absolute inset-0 mix-blend-multiply bg-repeat pointer-events-none">
+        <Image
+          src="/paper_texture.jpeg"
+          alt="texture"
+          height={50}
+          width={50}
+        ></Image>
+      </div>
     </div>
   );
 }
