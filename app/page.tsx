@@ -1,16 +1,17 @@
-import Image from "next/image";
+import Hero from "@/component/Hero";
+import NavBar from "@/component/NavBar";
 
 export default function Home() {
   return (
     <div className="h-screen w-screen relative bg-background ">
-      <div className="absolute inset-0 mix-blend-multiply bg-repeat pointer-events-none">
-        <Image
-          src="/paper_texture.jpeg"
-          alt="texture"
-          height={50}
-          width={50}
-        ></Image>
+      <div className="m-auto max-w-10/12 py-3">
+        <NavBar />
+        <Hero />
       </div>
+      <div
+        id="texture"
+        className="absolute inset-0 mix-blend-multiply bg-repeat pointer-events-none"
+      ></div>
     </div>
   );
 }
