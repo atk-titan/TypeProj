@@ -18,7 +18,7 @@ const Hero = () => {
           Race against time and rivals in the ultimate typing showdown. Feel the
           heat as every keystroke fuels your fire
         </div>
-        <div className="pt-4">
+        <div className="pt-4 hover:translate-y-0.5">
           <button className="bg-foreground text-background font-body flex items-center gap-1 rounded px-3 py-2 text-sm tracking-widest cursor-pointer">
             <CiGlobe className="text-xl" />
             Play Globally
