@@ -4,7 +4,7 @@ import Para from "@/component/Para";
 
 export default function Home() {
   return (
-    <div className="h-screen w-screen relative bg-background ">
+    <div className="bg-background relative h-screen w-screen">
       <div className="m-auto max-w-10/12 py-3">
         <NavBar />
         <Hero />
@@ -12,7 +12,7 @@ export default function Home() {
       </div>
       <div
         id="texture"
-        className="absolute inset-0 mix-blend-multiply bg-repeat pointer-events-none"
+        className="pointer-events-none absolute inset-0 bg-repeat mix-blend-multiply"
       ></div>
     </div>
   );

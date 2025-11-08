@@ -3,18 +3,18 @@ const NavBar = () => {
     <div className="flex items-center justify-between">
       <div className="font-logo text-foreground text-3xl tracking-widest">
         <span>Key</span>
-        <span className="bg-linear-to-b from-[#FF6B00] via-[#FF3B30] to-foreground bg-clip-text text-transparent">
+        <span className="to-foreground bg-linear-to-b from-[#FF6B00] via-[#FF3B30] bg-clip-text text-transparent">
           Blitz
         </span>
       </div>
-      <div className="font-body font-medium flex items-center sm:gap-8 gap-2 tracking-widest md:text-md text-sm">
-        <div className="cursor-pointer hover:underline transition-all duration-200">
+      <div className="font-body md:text-md flex items-center gap-2 text-sm font-medium tracking-widest sm:gap-8">
+        <div className="cursor-pointer transition-all duration-200 hover:underline">
           Single Player
         </div>
-        <div className="cursor-pointer border border-foreground p-2 rounded hover:underline transition-all duration-200">
+        <div className="border-foreground cursor-pointer rounded border p-2 transition-all duration-200 hover:underline">
           Create Room
         </div>
-        <div className="cursor-pointer border border-foreground bg-foreground text-background p-2 rounded hover:underline transition-all duration-200">
+        <div className="border-foreground bg-foreground text-background cursor-pointer rounded border p-2 transition-all duration-200 hover:underline">
           Join Room
         </div>
       </div>
