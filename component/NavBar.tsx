@@ -1,4 +1,5 @@
-const NavBar = () => {
+const NavBar = ({ setToggle }: { setToggle: ( val:string )=> void }) => {
+
   return (
     <div className="flex items-center justify-between">
       <div className="font-logo text-foreground text-3xl tracking-widest">
@@ -11,10 +12,16 @@ const NavBar = () => {
         <div className="cursor-pointer transition-all duration-200 hover:underline">
           Single Player
         </div>
-        <div className="border-foreground cursor-pointer rounded border p-2 transition-all duration-200 hover:underline">
+        <div
+          className="border-foreground cursor-pointer rounded border p-2 transition-all duration-200 hover:underline"
+          onClick={() => setString("create")}
+        >
           Create Room
         </div>
-        <div className="border-foreground bg-foreground text-background cursor-pointer rounded border p-2 transition-all duration-200 hover:underline">
+        <div
+          className="border-foreground bg-foreground text-background cursor-pointer rounded border p-2 transition-all duration-200 hover:underline"
+          onClick={() => setString("join")}
+        >
           Join Room
         </div>
       </div>
