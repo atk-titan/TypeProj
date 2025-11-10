@@ -2,10 +2,14 @@
 import Hero from "@/component/Hero";
 import NavBar from "@/component/NavBar";
 import Para from "@/component/Para";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function Home() {
   const [toggle, setToggle] = useState("");
+
+  useEffect(() => {
+    console.log(toggle);
+  }, [toggle]);
 
   return (
     <div className="bg-background relative h-screen w-screen">

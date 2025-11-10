@@ -14,13 +14,13 @@ const NavBar = ({ setToggle }: { setToggle: ( val:string )=> void }) => {
         </div>
         <div
           className="border-foreground cursor-pointer rounded border p-2 transition-all duration-200 hover:underline"
-          onClick={() => setString("create")}
+          onClick={() => setToggle("create")}
         >
           Create Room
         </div>
         <div
           className="border-foreground bg-foreground text-background cursor-pointer rounded border p-2 transition-all duration-200 hover:underline"
-          onClick={() => setString("join")}
+          onClick={() => setToggle("join")}
         >
           Join Room
         </div>

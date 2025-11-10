@@ -77,7 +77,7 @@ const Hero = () => {
       counter,
       {
         value: targetWpm,
-        duration: 1.5,
+        duration: 2,
         ease: "power1.out",
         onUpdate: () => setWpm(Math.floor(counter.value)),
       },
