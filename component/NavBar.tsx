@@ -1,4 +1,11 @@
-const NavBar = ({ setToggle }: { setToggle: ( val:string )=> void }) => {
+"use client";
+import { currentAtom } from "@/store/data";
+import { useState } from "react";
+import { useRecoilState, useSetRecoilState } from "recoil";
+
+const NavBar = () => {
+  const [toggle, setToggle] = useState("");
+  const [current, setCurrent] = useRecoilState(currentAtom);
 
   return (
     <div className="flex items-center justify-between">
@@ -9,18 +16,27 @@ const NavBar = ({ setToggle }: { setToggle: ( val:string )=> void }) => {
         </span>
       </div>
       <div className="font-body md:text-md flex items-center gap-2 text-sm font-medium tracking-widest sm:gap-8">
-        <div className="cursor-pointer transition-all duration-200 hover:underline">
+        <div
+          className={`cursor-pointer transition-all duration-200 hover:underline ${current === "Single Player" ? "underline" : " "}`}
+          onClick={() => setCurrent("Single Player")}
+        >
           Single Player
         </div>
         <div
           className="border-foreground cursor-pointer rounded border p-2 transition-all duration-200 hover:underline"
-          onClick={() => setToggle("create")}
+          onClick={() => {
+            setCurrent("Create Room");
+            setToggle("create");
+          }}
         >
           Create Room
         </div>
         <div
           className="border-foreground bg-foreground text-background cursor-pointer rounded border p-2 transition-all duration-200 hover:underline"
-          onClick={() => setToggle("join")}
+          onClick={() => {
+            setCurrent("Join Room");
+            setToggle("join");
+          }}
         >
           Join Room
         </div>
