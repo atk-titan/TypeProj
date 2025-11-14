@@ -1,11 +1,9 @@
 "use client";
-import { currentAtom } from "@/store/data";
 import { useState } from "react";
-import { useRecoilState, useSetRecoilState } from "recoil";
 
 const NavBar = () => {
   const [toggle, setToggle] = useState("");
-  const [current, setCurrent] = useRecoilState(currentAtom);
+  const [current, setCurrent] = useState("");
 
   return (
     <div className="flex items-center justify-between">
