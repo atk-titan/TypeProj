@@ -1,5 +1,5 @@
 "use client";
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef } from "react";
 import { CiGlobe } from "react-icons/ci";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
