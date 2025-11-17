@@ -1,5 +1,6 @@
 import Hero from "@/component/Hero";
 import Modal from "@/component/Modal";
+import ModalController from "@/component/ModalController";
 import NavBar from "@/component/NavBar";
 import Para from "@/component/Para";
 
@@ -8,11 +9,11 @@ export default function Home() {
   return (
     <div className="bg-background relative h-screen w-screen">
       <div className="relative m-auto max-w-10/12 py-3">
-        <NavBar />
+        <ModalController />  
         <Hero />
         <Para />
         {/* <Modal title="Join Room" placeholder="Enter Room Id/name" inputTitle="Room Name:" btnText="Join"/> */}
-        <Modal title="Room Creation" placeholder="Default (room123)" inputTitle="Room Name (Optional):" btnText="Create"/>
+        {/* <Modal title="Room Creation" placeholder="Default (room123)" inputTitle="Room Name (Optional):" btnText="Create"/> */}
       </div>
       <div
         id="texture"

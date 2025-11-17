@@ -6,20 +6,31 @@ const Modal = ({
   placeholder,
   inputTitle,
   btnText,
+  onClose,
 }: {
   title: string;
   placeholder: string;
   inputTitle: string;
   btnText: string;
+  onClose?: () => void;
 }) => {
   return (
-    <div className="bg-foreground/20 fixed inset-0 h-full w-full backdrop-blur-sm">
-      <div className="font-hero bg-background text-foreground absolute top-1/4 left-1/2 w-xl -translate-x-1/2 rounded p-5">
+    <div
+      className="bg-foreground/20 fixed inset-0 z-40 h-full w-full backdrop-blur-sm"
+      onClick={onClose}
+    >
+      <div
+        className="font-hero bg-background text-foreground absolute top-1/4 left-1/2 w-xl -translate-x-1/2 rounded p-5"
+        onClick={(e) => e.stopPropagation()}
+      >
         <div className="mb-8 flex justify-between">
           <h1 className="font-hero text-foreground text-2xl font-semibold tracking-wide">
             {title}
           </h1>
-          <div className="hover:border-foreground h-fit cursor-pointer rounded-full border border-transparent text-lg font-semibold transition-all duration-200">
+          <div
+            className="hover:border-foreground h-fit cursor-pointer rounded-full border border-transparent text-lg font-semibold transition-all duration-200"
+            onClick={onClose}
+          >
             <IoIosClose />
           </div>
         </div>
@@ -35,10 +46,10 @@ const Modal = ({
           />
         </div>
         <div className="mt-6 flex items-center gap-4 text-sm font-semibold tracking-wider">
-          <button className="border-foreground bg-foreground text-background w-24 rounded border py-1 cursor-pointer">
+          <button className="border-foreground bg-foreground text-background w-24 cursor-pointer rounded border py-1">
             {btnText}
           </button>
-          <button className="text-foreground/90 border-foreground w-24 rounded border py-1 cursor-pointer">
+          <button className="text-foreground/90 border-foreground w-24 cursor-pointer rounded border py-1">
             Cancel
           </button>
         </div>

@@ -1,10 +1,6 @@
 "use client";
-import { useState } from "react";
 
-const NavBar = () => {
-  const [toggle, setToggle] = useState("");
-  const [current, setCurrent] = useState("");
-
+const NavBar = ({ onAction }: { onAction: (str: string) => void }) => {
   return (
     <div className="flex items-center justify-between">
       <div className="font-logo text-foreground text-3xl tracking-widest">
@@ -13,28 +9,20 @@ const NavBar = () => {
           Blitz
         </span>
       </div>
-      <div className="font-body md:text-md flex items-center gap-2 text-sm font-medium tracking-widest sm:gap-8">
-        <div
-          className={`cursor-pointer transition-all duration-200 hover:underline ${current === "Single Player" ? "underline" : " "}`}
-          onClick={() => setCurrent("Single Player")}
-        >
+
+      <div className="text-sm font-body flex items-center gap-6 font-medium tracking-widest">
+        <div className="cursor-pointer" onClick={() => onAction("single")}>
           Single Player
         </div>
         <div
-          className="border-foreground cursor-pointer rounded border p-2 transition-all duration-200 hover:underline"
-          onClick={() => {
-            setCurrent("Create Room");
-            setToggle("create");
-          }}
+          className="cursor-pointer border p-2"
+          onClick={() => onAction("create")}
         >
           Create Room
         </div>
         <div
-          className="border-foreground bg-foreground text-background cursor-pointer rounded border p-2 transition-all duration-200 hover:underline"
-          onClick={() => {
-            setCurrent("Join Room");
-            setToggle("join");
-          }}
+          className="bg-foreground text-background cursor-pointer border p-2"
+          onClick={() => onAction("join")}
         >
           Join Room
         </div>
