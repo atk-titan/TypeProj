@@ -1,9 +1,11 @@
+import { getParagraph } from "@/lib/dbService";
 import { NextRequest, NextResponse } from "next/server";
 
-export function GET(req:NextRequest){
+export async function GET(req:NextRequest){
+    const paragraph = await getParagraph();
 
     return NextResponse.json({
-        
+        paragraph
     },{
         status:200
     })

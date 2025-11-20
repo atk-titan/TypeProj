@@ -14,9 +14,13 @@ const Hero = () => {
     const el = textRef.current;
     if (!el) return;
 
+    // Store the original HTML
     const fullHTML = el.innerHTML;
     const fullText = el.textContent || "";
+    
+    // Reset the element
     el.innerHTML = "";
+    el.style.borderColor = ""; // Reset border color
 
     const ghost = document.createElement("div");
     ghost.innerHTML = fullHTML;
@@ -29,7 +33,7 @@ const Hero = () => {
 
     // WPM counter start
     const counter = { value: 0 };
-    const targetWpm = 92; // final value
+    const targetWpm = 92;
 
     // Typing effect
     tl.to(
@@ -67,12 +71,13 @@ const Hero = () => {
           el.innerHTML = currentText;
         },
         onComplete: function () {
+          el.innerHTML = fullHTML; // Restore full text
           blinkCursor(el);
         },
       },
     );
 
-    // WPM count-up animation (starts at same time)
+    // WPM count-up animation
     tl.to(
       counter,
       {
@@ -82,7 +87,7 @@ const Hero = () => {
         onUpdate: () => setWpm(Math.floor(counter.value)),
       },
       0,
-    ); // start at same time as typing
+    );
 
     // Cursor blinking
     function blinkCursor(target: HTMLElement) {
@@ -94,7 +99,18 @@ const Hero = () => {
         ease: "none",
       });
     }
-  }, []);
+
+    // Cleanup function
+    return () => {
+      tl.kill(); // Kill the timeline
+      if (el) {
+        el.innerHTML = fullHTML; // Restore original content
+        gsap.killTweensOf(el); // Kill any tweens on the element
+        el.style.borderColor = ""; // Reset border
+      }
+      setWpm(0); // Reset WPM
+    };
+  }, []); // Empty dependency array ensures it runs on mount
 
   return (
     <div className="text-foreground mt-10 flex gap-2">
@@ -119,8 +135,8 @@ const Hero = () => {
           heat as every keystroke fuels your fire
         </div>
 
-        <div className="pt-4 hover:translate-y-0.5">
-          <button className="bg-foreground text-background font-body flex cursor-pointer items-center gap-1 rounded px-3 py-2 text-sm tracking-widest">
+        <div className="pt-4 hover:translate-y-0.5 transition-transform">
+          <button className="bg-foreground text-background font-body flex cursor-pointer items-center gap-1 rounded px-3 py-2 text-sm tracking-widest hover:opacity-90 transition-opacity">
             <CiGlobe className="text-xl" />
             Play Globally
           </button>

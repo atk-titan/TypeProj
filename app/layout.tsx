@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import ModalController from "@/component/ModalController";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -27,7 +28,16 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        {children}
+        <div className="bg-background relative h-screen w-screen">
+          <div className="relative m-auto max-w-10/12 py-3">
+            <ModalController />
+            {children}
+          </div>
+          <div
+            id="texture"
+            className="pointer-events-none absolute inset-0 bg-repeat mix-blend-multiply"
+          ></div>
+        </div>
       </body>
     </html>
   );

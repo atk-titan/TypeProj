@@ -16,6 +16,7 @@ export default function ModalController() {
           placeholder="Default (room123)"
           inputTitle="Room Name (Optional):"
           btnText="Create"
+          route=""
           onClose={() => setModalType("")}
         />
       )}
@@ -26,6 +27,7 @@ export default function ModalController() {
           placeholder="Enter Room ID/name"
           inputTitle="Room Name:"
           btnText="Join"
+          route=""
           onClose={() => setModalType("")}
         />
       )}

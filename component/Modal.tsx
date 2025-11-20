@@ -1,4 +1,5 @@
 "use client";
+import Link from "next/link";
 import { IoIosClose } from "react-icons/io";
 
 const Modal = ({
@@ -6,12 +7,14 @@ const Modal = ({
   placeholder,
   inputTitle,
   btnText,
+  route,
   onClose,
 }: {
   title: string;
   placeholder: string;
   inputTitle: string;
   btnText: string;
+  route: string;
   onClose?: () => void;
 }) => {
   return (
@@ -46,9 +49,11 @@ const Modal = ({
           />
         </div>
         <div className="mt-6 flex items-center gap-4 text-sm font-semibold tracking-wider">
-          <button className="border-foreground bg-foreground text-background w-24 cursor-pointer rounded border py-1">
-            {btnText}
-          </button>
+          <Link href={`/`}>
+            <button className="border-foreground bg-foreground text-background w-24 cursor-pointer rounded border py-1">
+              {btnText}
+            </button>
+          </Link>
           <button className="text-foreground/90 border-foreground w-24 cursor-pointer rounded border py-1">
             Cancel
           </button>
