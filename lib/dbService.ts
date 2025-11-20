@@ -12,7 +12,7 @@ export const getParagraph = async () => {
             skip: skipCount
         });
 
-        return paragraph;
+        return paragraph?.paragraph;
     }catch(error){
         throw error;
     }
