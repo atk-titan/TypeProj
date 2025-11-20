@@ -12,3 +12,8 @@ generator client {
 datasource db {
   provider = "postgresql"
 }
+
+model TypeParagraph{
+  id String @id @default(uuid())
+  paragraph String
+}
