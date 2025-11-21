@@ -11,16 +11,16 @@ const getParagraphFromAPI = async () => {
   }
 };
 
-const singlePlayer = async () => {
+const SinglePlayer = async () => {
     const { paragraph } = await getParagraphFromAPI();
 
     return (
-        <div>
-            <div>
+        <div className="w-full h-full">
+            <div className="relative h-full w-full">
                 <DisplayText paragraph={paragraph} />
             </div>
         </div>
     )
 }
 
-export default singlePlayer;
+export default SinglePlayer;

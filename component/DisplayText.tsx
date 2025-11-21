@@ -1,6 +1,5 @@
 "use client";
-
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 
 interface DisplayTextProps {
   paragraph: string;
@@ -8,18 +7,78 @@ interface DisplayTextProps {
 
 const DisplayText = ({ paragraph }: DisplayTextProps) => {
   const [input, setInput] = useState("");
+  const [caretStyle, setCaretStyle] = useState({ top: 0, left: 0 });
+
+  const containerRef = useRef<HTMLDivElement>(null);
+  const spansRef = useRef<(HTMLSpanElement | null)[]>([]);
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target.value.length <= paragraph.length) {
+      setInput(e.target.value);
+    }
+  };
+
+  // 🔥 Caret positioning logic
+  useEffect(() => {
+    const currentSpan = spansRef.current[input.length];
+
+    if (!currentSpan || !containerRef.current) return;
+
+    const spanRect = currentSpan.getBoundingClientRect();
+    const containerRect = containerRef.current.getBoundingClientRect();
+
+    setCaretStyle({
+      top: spanRect.top - containerRect.top,
+      left: spanRect.left - containerRect.left,
+    });
+  }, [input]);
 
   return (
-    <div className="flex flex-col gap-4 font-body leading-loose text-xl">
-      <div className="absolute w-full p-4 text-lg text-neutral-500">
-        {paragraph}
+    <div
+      ref={containerRef}
+      className="font-body relative w-full text-xl leading-loose"
+    >
+      {/* Paragraph Rendering */}
+      <div className="w-full py-4 text-neutral-400">
+        {paragraph.split("").map((char, index) => {
+          let className = "";
+
+          if (index < input.length) {
+            className =
+              input[index] === char
+                ? "text-foreground"
+                : "text-red-600 underline";
+          }
+
+          return (
+            <span
+              ref={(el) => {
+                spansRef.current[index] = el;
+              }}
+              key={index}
+              className={className}
+            >
+              {char}
+            </span>
+          );
+        })}
       </div>
 
-      {/* Input box where user types */}
+      {/* 🔥 Custom Caret */}
+      <div
+        className="animate-blink absolute h-6 w-[2px] bg-black"
+        style={{
+          top: caretStyle.top,
+          left: caretStyle.left,
+        }}
+      />
+
+      {/* Hidden Input */}
       <input
         value={input}
-        onChange={(e) => setInput(e.target.value)}
-        className="w-full p-4 text-lg outline-none placeholder:text-foreground z-30"
+        onChange={handleChange}
+        spellCheck={false}
+        className="font-body absolute inset-0 h-full w-full bg-transparent py-4 text-xl leading-loose tracking-normal whitespace-pre-wrap text-transparent caret-transparent outline-none selection:bg-transparent"
       />
     </div>
   );
