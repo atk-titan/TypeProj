@@ -1,5 +1,5 @@
-import DisplayText from "@/component/DisplayText";
 import axios from "axios";
+import SinglePlayerPanel from '@/component/SinglePlayerPanel';
 
 const getParagraphFromAPI = async () => {
   try {
@@ -17,7 +17,7 @@ const SinglePlayer = async () => {
     return (
         <div className="w-full h-full">
             <div className="relative h-full w-full">
-                <DisplayText paragraph={paragraph} />
+                <SinglePlayerPanel paragraph={paragraph} />
             </div>
         </div>
     )

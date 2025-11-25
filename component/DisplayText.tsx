@@ -3,10 +3,11 @@ import { useState, useEffect, useRef } from "react";
 
 interface DisplayTextProps {
   paragraph: string;
+  input: string;
+  setInput: (str: string) => void;
 }
 
-const DisplayText = ({ paragraph }: DisplayTextProps) => {
-  const [input, setInput] = useState("");
+const DisplayText = ({ paragraph , input , setInput }: DisplayTextProps) => {
   const [caretStyle, setCaretStyle] = useState({ top: 0, left: 0 });
 
   const containerRef = useRef<HTMLDivElement>(null);
@@ -18,7 +19,6 @@ const DisplayText = ({ paragraph }: DisplayTextProps) => {
     }
   };
 
-  // 🔥 Caret positioning logic
   useEffect(() => {
     const currentSpan = spansRef.current[input.length];
 
