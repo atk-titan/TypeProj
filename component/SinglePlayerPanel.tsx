@@ -3,6 +3,7 @@
 import { useState } from "react";
 import DisplayText from "./DisplayText";
 import ArcMaskComponent from "./Arc";
+import Graph from "./Graph";
 
 const SinglePlayerPanel = ({ paragraph }: { paragraph: string }) => {
   const [input, setInput] = useState("");
@@ -39,6 +40,7 @@ const SinglePlayerPanel = ({ paragraph }: { paragraph: string }) => {
         </div>
         <ArcMaskComponent progress={accuracy} className="h-20 font-body" />
       </div>
+        <Graph />
       <DisplayText paragraph={paragraph} input={input} setInput={onChange} />
     </div>
   );
